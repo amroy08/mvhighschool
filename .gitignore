@@ -1,0 +1,21 @@
+# Database configuration containing sensitive credentials
+db.php
+
+# Dynamic user uploads directories
+uploads/
+
+# Ignore all dynamic assets by ignoring everything in assets/
+assets/*
+
+# But keep static logos and template icons/images
+!assets/EnglishMediumLogo.png
+!assets/HindiMediumLogo.png
+!assets/icons8-facebook-circled-50.png
+!assets/icons8-instagram-50.png
+!assets/icons8-youtube-50.png
+!assets/PamphletImage.jpg
+!assets/Icons8.zip
+
+# OS-specific files
+.DS_Store
+Thumbs.db

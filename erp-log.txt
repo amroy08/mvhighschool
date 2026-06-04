@@ -1,0 +1,200 @@
+2026-06-03 08:16:21
+HTTP CODE: 403
+RESPONSE: <html>
+<head><title>403 Forbidden</title></head>
+<body>
+<center><h1>403 Forbidden</h1></center>
+</body>
+</html>
+
+CURL ERROR: 
+POST DATA: Array
+(
+    [student_name] => Amroy
+    [class] => Nursery
+    [parent] => Am
+    [mobile_number] => 8433568078
+    [email] => amroypereira2003@gmail.com
+    [message] => Hi
+    [school_code] => mvhs
+    [lead_source] => website
+    [utm_source] => website
+    [academic_year] => AY 2026-2027
+)
+
+-------------------------
+2026-06-03 08:50:36
+HTTP CODE: 403
+RESPONSE: <html>
+<head><title>403 Forbidden</title></head>
+<body>
+<center><h1>403 Forbidden</h1></center>
+</body>
+</html>
+
+CURL ERROR: 
+POST DATA: Array
+(
+    [student_name] => Santosh
+    [class] => Grade 1
+    [parent] => ABCD
+    [mobile_number] => +919004188888
+    [email] => demo@gmail.com
+    [message] => sq
+    [school_code] => MVHS
+    [lead_source] => website
+    [utm_source] => website
+    [academic_year] => AY 2026-2027
+)
+
+-------------------------
+2026-06-03 08:56:57
+HTTP CODE: 403
+RESPONSE: <html>
+<head><title>403 Forbidden</title></head>
+<body>
+<center><h1>403 Forbidden</h1></center>
+</body>
+</html>
+
+CURL ERROR: 
+POST DATA: Array
+(
+    [student_name] => Amroy
+    [class] => Nursery
+    [parent] => Am
+    [mobile_number] => 8433568078
+    [email] => amroypereira2003@gmail.com
+    [message] => Hi
+    [school_code] => MVHS
+    [lead_source] => website
+    [utm_source] => website
+    [academic_year] => AY 2026-2027
+)
+
+-------------------------
+2026-06-03 09:06:27
+HTTP CODE: 403
+RESPONSE: <html>
+<head><title>403 Forbidden</title></head>
+<body>
+<center><h1>403 Forbidden</h1></center>
+</body>
+</html>
+
+CURL ERROR: 
+POST DATA: Array
+(
+    [student_name] => Amroy
+    [class] => Nursery
+    [parent] => Am
+    [mobile_number] => 8433568078
+    [email] => amroypereira2003@gmail.com
+    [message] => hi
+    [school_code] => MVHS
+    [lead_source] => website
+    [utm_source] => website
+    [academic_year] => AY 2026-2027
+)
+
+-------------------------
+2026-06-03 09:07:03
+HTTP CODE: 403
+RESPONSE: <html>
+<head><title>403 Forbidden</title></head>
+<body>
+<center><h1>403 Forbidden</h1></center>
+</body>
+</html>
+
+CURL ERROR: 
+POST DATA: Array
+(
+    [student_name] => Test
+    [class] => Jr. KG
+    [parent] => Test
+    [mobile_number] => 7767867868
+    [email] => pia@gmail.com
+    [message] => Test
+    [school_code] => MVHS
+    [lead_source] => website
+    [utm_source] => website
+    [academic_year] => AY 2026-2027
+)
+
+-------------------------
+2026-06-03 09:07:04
+HTTP CODE: 403
+RESPONSE: <html>
+<head><title>403 Forbidden</title></head>
+<body>
+<center><h1>403 Forbidden</h1></center>
+</body>
+</html>
+
+CURL ERROR: 
+POST DATA: Array
+(
+    [student_name] => Test
+    [class] => Jr. KG
+    [parent] => Test
+    [mobile_number] => 7767867868
+    [email] => pia@gmail.com
+    [message] => Test
+    [school_code] => MVHS
+    [lead_source] => website
+    [utm_source] => website
+    [academic_year] => AY 2026-2027
+)
+
+-------------------------
+2026-06-03 13:13:43
+HTTP CODE: 403
+RESPONSE: <html>
+<head><title>403 Forbidden</title></head>
+<body>
+<center><h1>403 Forbidden</h1></center>
+</body>
+</html>
+
+CURL ERROR: 
+POST DATA: Array
+(
+    [student_name] => DEMO TEST
+    [class] => Sr. KG
+    [parent] => DEMO TEST
+    [mobile_number] => 2000222903
+    [email] => demo@gmai.com
+    [message] => 
+    [school_code] => MVHS
+    [lead_source] => website
+    [utm_source] => website
+    [academic_year] => AY 2026-2027
+)
+
+-------------------------
+2026-06-04 05:45:08
+HTTP CODE: 403
+RESPONSE: <html>
+<head><title>403 Forbidden</title></head>
+<body>
+<center><h1>403 Forbidden</h1></center>
+</body>
+</html>
+
+CURL ERROR: 
+POST DATA: Array
+(
+    [student_name] => Santosh
+    [class] => Grade 2
+    [parent] => ABCD
+    [mobile_number] => +919004188888
+    [email] => demo@gmail.com
+    [message] => dws
+    [school_code] => MVHS
+    [lead_source] => website
+    [utm_source] => website
+    [academic_year] => AY 2026-2027
+)
+
+-------------------------

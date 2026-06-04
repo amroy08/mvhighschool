@@ -1,0 +1,48 @@
+<?php
+session_start();
+if(!isset($_SESSION['admin_logged_in'])) { 
+    header("Location: login.php"); 
+    exit(); 
+}
+
+include "../db.php";
+
+$type = 'values';
+$data = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM about_mission_vision WHERE type='$type'"));
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $content = $_POST['content'];
+
+    mysqli_query($conn,
+        "UPDATE about_mission_vision SET content='$content'
+         WHERE type='$type'"
+    );
+
+    header("Location: manage-mission-vision.php");
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Edit Core Values</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<div class="container" style="margin-top:40px;">
+<h2>Edit Core Values</h2>
+
+<a href="dashboard.php" class="back-btn">← Back to Dashboard</a>
+<form method="POST">
+
+<label>Values Content</label>
+<textarea name="content" rows="8" required><?= $data['content'] ?></textarea>
+
+<button class="btn primary" style="margin-top:15px;">Update</button>
+
+</form>
+
+</div>
+</body>
+</html>

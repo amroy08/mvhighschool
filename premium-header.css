@@ -1,0 +1,256 @@
+/* =========================================================
+   PREMIUM HEADER — Glassmorphism + Modern Nav
+   ========================================================= */
+
+.premium-header {
+  width: 100%;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(226,232,240,0.6);
+  box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+}
+
+/* ---- TOP ROW (LOGOS + TITLE) ---- */
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 40px;
+  background: linear-gradient(135deg, #e8efff 0%, #f0f4ff 50%, #fef9ee 100%);
+  border-bottom: 1px solid rgba(200,215,240,0.5);
+}
+
+.logo-box {
+  width: 80px;
+  height: 80px;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.school-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: transparent;
+  transition: transform 0.3s ease;
+}
+
+.school-logo:hover { transform: scale(1.05); }
+
+/* Title */
+.school-title-wrap {
+  flex: 1;
+  text-align: center;
+  line-height: 1.2;
+  padding: 0 16px;
+}
+
+.trust-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 2px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.school-title {
+  font-size: clamp(20px, 3vw, 30px);
+  font-weight: 900;
+  color: #0a1a2f;
+  letter-spacing: -0.01em;
+}
+
+/* ---- NAVBAR ---- */
+.nav-bar {
+  background: #fafbfd;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border-bottom: 1px solid rgba(226,232,240,0.4);
+}
+
+/* All nav links */
+.nav-bar a {
+  color: #334155;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 16px;
+  height: 40px;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+/* Hover underline effect */
+.nav-bar a::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #d4a012, #f0c940);
+  border-radius: 1px;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-bar a:hover::after { width: 70%; }
+.nav-bar a:hover { color: #0a1a2f; background: rgba(212,160,18,0.06); }
+
+/* Active page */
+.nav-link.active {
+  background: linear-gradient(135deg, #d4a012, #f0c940);
+  color: #0a1a2f !important;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(212,160,18,0.25);
+}
+
+.nav-link.active::after { display: none; }
+
+/* Monthly Activities highlight */
+.highlight {
+  background: linear-gradient(135deg, #d4a012, #f0c940) !important;
+  color: #0a1a2f !important;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(212,160,18,0.25);
+}
+
+.highlight::after { display: none !important; }
+
+/* ---- NAV BUTTONS ---- */
+.nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 20px;
+  font-weight: 700;
+  font-size: 13px;
+  border-radius: 8px;
+  white-space: nowrap;
+  transition: all 0.25s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.nav-btn::after { display: none !important; }
+
+.contact-btn {
+  background: linear-gradient(135deg, #059669, #10b981) !important;
+  color: #fff !important;
+}
+
+.contact-btn:hover {
+  background: linear-gradient(135deg, #047857, #059669) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(5,150,105,0.3);
+}
+
+.donate-btn {
+  background: linear-gradient(135deg, #dc2626, #ef4444) !important;
+  color: #fff !important;
+}
+
+.donate-btn:hover {
+  background: linear-gradient(135deg, #b91c1c, #dc2626) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(220,38,38,0.3);
+}
+
+/* ---- HAMBURGER ---- */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  margin-left: 15px;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.hamburger:hover { background: rgba(0,0,0,0.04); }
+
+.hamburger span {
+  width: 26px;
+  height: 2.5px;
+  background: #0a1a2f;
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ---- MOBILE ---- */
+@media (max-width: 900px) {
+  .header-top { padding: 10px 16px; }
+  .logo-box { width: 56px; height: 56px; }
+  .trust-name { font-size: 11px; }
+  .school-title { font-size: 18px; }
+  .hamburger { display: flex; }
+
+  .nav-bar {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px 16px;
+    background: rgba(255,255,255,0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(226,232,240,0.5);
+    animation: slideDown 0.3s ease;
+  }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .nav-bar.show-menu { display: flex; }
+
+  .nav-bar a {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 15px;
+  }
+
+  .nav-bar a::after { display: none; }
+
+  .nav-bar a:hover { background: rgba(212,160,18,0.08); }
+
+  .nav-btn { margin-top: 0; width: 100%; }
+}
