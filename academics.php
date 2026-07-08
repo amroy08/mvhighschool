@@ -10,7 +10,10 @@ $seoImage       = BASE_URL . "/assets/PamphletImage.jpg";
 $seoType        = "website";
 
 /* ---- DB — unchanged ---- */
-$levels = mysqli_query($conn, "SELECT * FROM academic_levels ORDER BY id ASC");
+$levels = false;
+if (isset($conn) && $conn) {
+    $levels = mysqli_query($conn, "SELECT * FROM academic_levels ORDER BY id ASC");
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -21,8 +24,8 @@ $levels = mysqli_query($conn, "SELECT * FROM academic_levels ORDER BY id ASC");
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="main.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="main.css">
   <link rel="stylesheet" href="academics.css">
 
   <style>
@@ -86,7 +89,11 @@ $levels = mysqli_query($conn, "SELECT * FROM academic_levels ORDER BY id ASC");
     <div class="levels-grid" id="level-list">
       <?php
       $levelArr = [];
-      while($l = mysqli_fetch_assoc($levels)) $levelArr[] = $l;
+      if ($levels) {
+        while($l = mysqli_fetch_assoc($levels)) {
+          $levelArr[] = $l;
+        }
+      }
 
       $icons = ['🌱','📖','🔬','🎓','📐'];
       foreach($levelArr as $idx => $l):

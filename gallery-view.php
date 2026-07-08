@@ -8,8 +8,15 @@ if ($slug === '') {
     die("Invalid album.");
 }
 
+if (!isset($conn) || !$conn) {
+    die("Database connection error.");
+}
+
 // 2) Secure query (prepared statement — unchanged)
 $stmt = mysqli_prepare($conn, "SELECT * FROM gallery_albums WHERE slug = ?");
+if (!$stmt) {
+    die("Album not found.");
+}
 mysqli_stmt_bind_param($stmt, "s", $slug);
 mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
@@ -54,8 +61,8 @@ $seoImage   = BASE_URL . "/assets/PamphletImage.jpg";
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="main.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="main.css">
   <link rel="stylesheet" href="gallery.css">
 
   <style>

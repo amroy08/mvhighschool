@@ -35,8 +35,8 @@ $alumni_feat = mysqli_query($conn, "SELECT * FROM alumni ORDER BY id DESC LIMIT 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <!-- Main stylesheet (includes all design system partials) -->
-  <link rel="stylesheet" href="main.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="main.css">
 
   <style>
   /* ======================================================
@@ -830,6 +830,7 @@ $alumni_feat = mysqli_query($conn, "SELECT * FROM alumni ORDER BY id DESC LIMIT 
           <?php
           $slide_count = 0;
           while($img = mysqli_fetch_assoc($hero_images)) {
+            if (empty($img['image'])) continue;
             $slide_count++;
             ?>
             <img
@@ -1149,8 +1150,12 @@ while($al = mysqli_fetch_assoc($gallery_albums)) {
 
     <div class="gallery-preview-grid">
       <?php foreach($gallery_items as $al):
-        $path  = ltrim($al['cover_image'], '/');
-        $cover = '/' . str_replace('%2F','/', rawurlencode($path));
+        if (!empty($al['cover_image'])) {
+          $path  = ltrim($al['cover_image'], '/');
+          $cover = '/' . str_replace('%2F','/', rawurlencode($path));
+        } else {
+          $cover = 'assets/PamphletImage.jpg';
+        }
         $slug  = urlencode($al['slug']);
         $name  = htmlspecialchars($al['album_name']);
       ?>
@@ -1438,7 +1443,11 @@ while($al = mysqli_fetch_assoc($alumni_feat)) {
     const modal = document.getElementById('admissionModal');
     if (modal) {
       // Slight delay so page renders first
-      setTimeout(() => { modal.style.display = 'flex'; }, 1200);
+      setTimeout(() => {
+        modal.style.display = 'flex';
+        const closeBtn = modal.querySelector('.close-modal');
+        if (closeBtn) closeBtn.focus();
+      }, 1200);
     }
   }
 
@@ -1474,6 +1483,30 @@ while($al = mysqli_fetch_assoc($alumni_feat)) {
     }
   });
 
+  /* Trap focus inside the open modal */
+  document.addEventListener('keydown', function(e) {
+    const modal = document.getElementById('admissionModal');
+    if (!modal || modal.style.display !== 'flex') return;
+    if (e.key === 'Tab') {
+      const focusables = modal.querySelectorAll('input, select, textarea, button, a, [tabindex="0"]');
+      if (focusables.length === 0) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+
+      if (e.shiftKey) { // Shift + Tab
+        if (document.activeElement === first) {
+          last.focus();
+          e.preventDefault();
+        }
+      } else { // Tab
+        if (document.activeElement === last) {
+          first.focus();
+          e.preventDefault();
+        }
+      }
+    }
+  });
+
   /* Close on overlay click */
   const modal = document.getElementById('admissionModal');
   if (modal) {
@@ -1486,7 +1519,10 @@ while($al = mysqli_fetch_assoc($alumni_feat)) {
   const form = document.getElementById('admissionPopupForm');
   const submitBtn = document.getElementById('popupSubmitBtn');
   if (form && submitBtn) {
-    form.addEventListener('submit', function() {
+    form.addEventListener('submit', function(e) {
+      if (form.checkValidity && !form.checkValidity()) {
+        return;
+      }
       submitBtn.disabled = true;
       submitBtn.textContent = 'Submitting...';
       submitBtn.classList.add('loading');

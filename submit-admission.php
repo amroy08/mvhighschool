@@ -1,9 +1,13 @@
 <?php
 include "db.php";
 
+if (!isset($conn) || !$conn) {
+    die("Database connection error.");
+}
+
 // Read form data
-$student_name = mysqli_real_escape_string($conn, $_POST['student_name']);
-$parent_name  = mysqli_real_escape_string($conn, $_POST['parent_name']);
+$student_name = mysqli_real_escape_string($conn, $_POST['student_name'] ?? '');
+$parent_name  = mysqli_real_escape_string($conn, $_POST['parent_name'] ?? '');
 $class        = mysqli_real_escape_string($conn, $_POST['class']);
 $phone        = mysqli_real_escape_string($conn, $_POST['phone']);
 $message      = mysqli_real_escape_string($conn, $_POST['message']);

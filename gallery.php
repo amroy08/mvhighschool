@@ -21,8 +21,8 @@ $albums = mysqli_query($conn, "SELECT * FROM gallery_albums ORDER BY id DESC");
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="main.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="main.css">
   <link rel="stylesheet" href="gallery.css">
 </head>
 <body>
@@ -60,8 +60,12 @@ $albums = mysqli_query($conn, "SELECT * FROM gallery_albums ORDER BY id DESC");
     <?php if(count($album_arr) > 0): ?>
     <div class="gallery-grid">
       <?php foreach($album_arr as $a):
-        $path  = ltrim($a['cover_image'], '/');
-        $cover = '/' . str_replace('%2F','/', rawurlencode($path));
+        if (!empty($a['cover_image'])) {
+          $path  = ltrim($a['cover_image'], '/');
+          $cover = '/' . str_replace('%2F','/', rawurlencode($path));
+        } else {
+          $cover = 'assets/PamphletImage.jpg';
+        }
         $slug  = urlencode($a['slug']);
         $name  = htmlspecialchars($a['album_name']);
       ?>

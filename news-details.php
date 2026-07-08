@@ -7,7 +7,14 @@ if ($id <= 0) {
   die("<h2>News not found</h2>");
 }
 
+if (!isset($conn) || !$conn) {
+  die("<h2>Database connection error</h2>");
+}
+
 $res  = mysqli_query($conn, "SELECT * FROM news_events WHERE id=$id AND status='Published' LIMIT 1");
+if (!$res) {
+  die("<h2>News not found</h2>");
+}
 $news = mysqli_fetch_assoc($res);
 
 if (!$news) {
@@ -39,8 +46,8 @@ $seoCanonical = BASE_URL . "/news-details.php?id=$id";
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="main.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="main.css">
 </head>
 <body>
 

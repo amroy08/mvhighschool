@@ -6,7 +6,14 @@ include "config.php";
 $slug = isset($_GET['slug']) ? trim($_GET['slug']) : '';
 if (empty($slug)) { die("<h2>Accomplishment not found</h2>"); }
 
+if (!isset($conn) || !$conn) {
+    die("<h2>Database connection error</h2>");
+}
+
 $stmt = mysqli_prepare($conn, "SELECT * FROM accomplishments WHERE slug = ?");
+if (!$stmt) {
+    die("<h2>Accomplishment not found</h2>");
+}
 mysqli_stmt_bind_param($stmt, "s", $slug);
 mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
@@ -28,8 +35,8 @@ $seoCanonical = BASE_URL . "/accomplishment-details.php?slug=" . urlencode($slug
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="main.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="main.css">
 </head>
 <body>
 

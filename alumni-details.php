@@ -6,8 +6,15 @@ include "config.php";
 $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 if ($id <= 0) { die("<h2>Alumni profile not found</h2>"); }
 
+if (!isset($conn) || !$conn) {
+    die("<h2>Database connection error</h2>");
+}
+
 // Use prepared statement
 $stmt = mysqli_prepare($conn, "SELECT * FROM alumni WHERE id = ?");
+if (!$stmt) {
+    die("<h2>Alumni profile not found</h2>");
+}
 mysqli_stmt_bind_param($stmt, "i", $id);
 mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
@@ -27,8 +34,8 @@ $seoTitle = $name . " | Alumni | M.V. High School";
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="main.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="main.css">
 </head>
 <body>
 

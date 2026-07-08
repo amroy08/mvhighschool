@@ -3,7 +3,13 @@ include "db.php";
 include "config.php";
 
 /* ---- DB — unchanged ---- */
-$data = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM school_bank WHERE id=1"));
+$data = null;
+if (isset($conn) && $conn) {
+    $res = mysqli_query($conn, "SELECT * FROM school_bank WHERE id=1");
+    if ($res) {
+        $data = mysqli_fetch_assoc($res);
+    }
+}
 
 $seoTitle    = "Support Our School | Donate to M.V. High School";
 $seoCanonical = BASE_URL . "/donate.php";
@@ -19,8 +25,8 @@ $seoCanonical = BASE_URL . "/donate.php";
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="main.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="main.css">
 </head>
 <body>
 

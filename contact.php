@@ -10,7 +10,13 @@ $seoImage       = BASE_URL . "/assets/PamphletImage.jpg";
 $seoType        = "website";
 
 /* ---- DB — unchanged ---- */
-$data = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM school_contact WHERE id=1"));
+$data = null;
+if (isset($conn) && $conn) {
+    $res = mysqli_query($conn, "SELECT * FROM school_contact WHERE id=1");
+    if ($res) {
+        $data = mysqli_fetch_assoc($res);
+    }
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -21,8 +27,8 @@ $data = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM school_contact WHE
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="main.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="main.css">
 </head>
 <body>
 

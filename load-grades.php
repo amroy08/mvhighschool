@@ -1,13 +1,16 @@
 <?php
 include "db.php";
 
-$level_id = $_GET['level_id'];
-
-$res = mysqli_query($conn, "SELECT * FROM academic_grades WHERE level_id=$level_id ORDER BY id ASC");
+$level_id = isset($_GET['level_id']) ? (int)$_GET['level_id'] : 0;
 
 $grades = [];
-while ($g = mysqli_fetch_assoc($res)) {
-    $grades[] = $g;
+if ($level_id > 0 && isset($conn) && $conn) {
+    $res = mysqli_query($conn, "SELECT * FROM academic_grades WHERE level_id=$level_id ORDER BY id ASC");
+    if ($res) {
+        while ($g = mysqli_fetch_assoc($res)) {
+            $grades[] = $g;
+        }
+    }
 }
 
 echo json_encode($grades);
