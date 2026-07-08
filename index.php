@@ -155,10 +155,12 @@ $alumni_feat = mysqli_query($conn, "SELECT * FROM alumni ORDER BY id DESC LIMIT 
 
   .slideshow-container {
     width: 100%;
-    height: clamp(260px, 30vw, 420px);
+    aspect-ratio: 4 / 3;
+    height: auto;
     border-radius: var(--radius-lg);
     overflow: hidden;
     position: relative;
+    background: rgba(12, 31, 69, 0.45);
   }
 
   .slide-img {
@@ -166,7 +168,7 @@ $alumni_feat = mysqli_query($conn, "SELECT * FROM alumni ORDER BY id DESC LIMIT 
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     opacity: 0;
     transition: opacity 1.8s ease-in-out;
     will-change: opacity;
