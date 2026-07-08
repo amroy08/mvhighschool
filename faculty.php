@@ -10,13 +10,24 @@ $seoImage       = BASE_URL . "/assets/PamphletImage.jpg";
 $seoType        = "website";
 
 /* ---- DB — unchanged ---- */
-$teaching    = mysqli_query($conn, "SELECT * FROM faculty WHERE type='Teaching' ORDER BY id ASC");
-$nonteaching = mysqli_query($conn, "SELECT * FROM faculty WHERE type='Non-Teaching' ORDER BY id ASC");
-
 $teaching_arr    = [];
 $nonteaching_arr = [];
-while($r = mysqli_fetch_assoc($teaching))    $teaching_arr[]    = $r;
-while($r = mysqli_fetch_assoc($nonteaching)) $nonteaching_arr[] = $r;
+
+if (isset($conn) && $conn) {
+    $teaching    = mysqli_query($conn, "SELECT * FROM faculty WHERE staff_type='Teaching' ORDER BY id ASC");
+    $nonteaching = mysqli_query($conn, "SELECT * FROM faculty WHERE staff_type='Non-Teaching' ORDER BY id ASC");
+
+    if ($teaching) {
+        while($r = mysqli_fetch_assoc($teaching)) {
+            $teaching_arr[] = $r;
+        }
+    }
+    if ($nonteaching) {
+        while($r = mysqli_fetch_assoc($nonteaching)) {
+            $nonteaching_arr[] = $r;
+        }
+    }
+}
 ?>
 <!doctype html>
 <html lang="en">

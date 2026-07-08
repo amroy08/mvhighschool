@@ -314,6 +314,11 @@
   box-shadow: 0 4px 24px rgba(16,45,92,0.12);
 }
 
+/* Hide mobile menu header on desktop */
+.mobile-menu-header {
+  display: none;
+}
+
 /* ==================== MOBILE HEADER ==================== */
 @media (max-width: 900px) {
   .utility-bar { display: none; }
