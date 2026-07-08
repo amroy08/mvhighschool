@@ -46,13 +46,13 @@ $seoCanonical = BASE_URL . "/news-details.php?id=$id";
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=5">
-  <link rel="stylesheet" href="main.css?v=5">
+  <link rel="stylesheet" href="styles.css?v=6">
+  <link rel="stylesheet" href="main.css?v=6">
 </head>
 <body>
 
 <header></header>
-<script src="load-header.js?v=5" defer></script>
+<script src="load-header.js?v=6" defer></script>
 
 <!-- PAGE HERO -->
 <section class="page-hero" aria-label="News detail hero">
@@ -115,6 +115,6 @@ $seoCanonical = BASE_URL . "/news-details.php?id=$id";
 
 </main>
 
-<script src="footer.js?v=5" defer></script>
+<script src="footer.js?v=6" defer></script>
 </body>
 </html>

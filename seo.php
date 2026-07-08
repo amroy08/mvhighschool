@@ -46,8 +46,9 @@ if (!isset($seoSchema)) {
             "addressCountry" => "IN"
         ],
         "sameAs" => [
-            "https://www.facebook.com/",
-            "https://www.instagram.com/mvhs979/"
+            FACEBOOK_URL,
+            INSTAGRAM_URL,
+            YOUTUBE_URL
         ]
     ];
 }

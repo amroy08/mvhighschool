@@ -191,14 +191,17 @@
   box-shadow: 0 8px 20px rgba(229,164,38,0.30);
 }
 
-.social-icons a img {
-  width: 20px;
-  height: 20px;
-  filter: brightness(0) invert(1);
-  transition: filter var(--transition-fast);
+.social-icons a svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+  color: #fff;
+  transition: color var(--transition-fast);
 }
 
-.social-icons a:hover img { filter: brightness(0); }
+.social-icons a:hover svg {
+  color: var(--navy);
+}
 
 /* ---- MAP ---- */
 .footer-map {

@@ -77,13 +77,17 @@
   border-color: var(--gold);
 }
 
-.utility-social a img {
-  width: 14px;
-  height: 14px;
-  filter: brightness(0) invert(1);
+.utility-social a svg {
+  width: 13px;
+  height: 13px;
+  fill: currentColor;
+  color: #fff;
+  transition: color var(--transition-fast);
 }
 
-.utility-social a:hover img { filter: brightness(0); }
+.utility-social a:hover svg {
+  color: var(--navy);
+}
 
 .utility-divider {
   width: 1px;

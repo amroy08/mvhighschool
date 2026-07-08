@@ -45,13 +45,13 @@ if (!defined('SCHOOL_ADDRESS')) {
 
 // Social media
 if (!defined('INSTAGRAM_URL')) {
-    define('INSTAGRAM_URL', 'https://www.instagram.com/mvhs979?igsh=MTFnZGg3NG80eWlsNW==');
+    define('INSTAGRAM_URL', 'https://www.instagram.com/mvhs979?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==');
 }
 if (!defined('FACEBOOK_URL')) {
-    define('FACEBOOK_URL', 'https://www.facebook.com/share/1Ea6yaikaF/?mibextid=wwXIfr');
+    define('FACEBOOK_URL', 'https://www.facebook.com/profile.php?id=100057434679919');
 }
 if (!defined('YOUTUBE_URL')) {
-    define('YOUTUBE_URL', 'https://youtube.com/@marwaravidyalaya?si=EhAwI2ghiyyAqGu5');
+    define('YOUTUBE_URL', 'https://www.youtube.com/@marwarividyalaya');
 }
 
 // Note: No WhatsApp number verified — do not add WhatsApp link
