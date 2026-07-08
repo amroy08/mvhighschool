@@ -446,7 +446,7 @@ $fromAdmissions = true;
     <div style="text-align:center;max-width:600px;margin:0 auto;">
       <h2 style="color:var(--navy);font-size:1.35rem;margin-bottom:10px;">Need Help with Admissions?</h2>
       <p style="color:var(--text-secondary);margin-bottom:20px;">
-        Our admissions team is available Monday to Saturday, 7:30 AM – 2:00 PM.
+        Our admissions team is available Monday to Friday, 7:30 AM – 2:00 PM.
         Call us or visit the school directly.
       </p>
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">

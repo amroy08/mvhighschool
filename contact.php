@@ -95,7 +95,7 @@ if (isset($conn) && $conn) {
           <p><a href="tel:+912247836669" style="color:var(--navy-mid);font-weight:600;text-decoration:none;">022-47836669</a></p>
           <p><a href="tel:+912223865845" style="color:var(--navy-mid);font-weight:600;text-decoration:none;">022-23865845</a></p>
         <?php endif; ?>
-        <p style="font-size:13px;color:var(--muted);margin-top:8px;">Monday – Saturday, 7:30 AM – 2:00 PM</p>
+        <p style="font-size:13px;color:var(--muted);margin-top:8px;">Monday – Friday, 7:30 AM – 2:00 PM</p>
       </div>
 
       <div class="contact-box">
@@ -118,14 +118,11 @@ if (isset($conn) && $conn) {
   <div class="container">
     <div style="max-width:600px;margin:0 auto;text-align:center;">
       <h2 style="font-size:1.15rem;color:var(--navy);margin-bottom:16px;">🕐 School Hours</h2>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:left;max-width:400px;margin:0 auto;">
-        <div class="card" style="padding:16px 18px;">
-          <div style="font-weight:700;color:var(--ink);font-size:14px;">Monday – Friday</div>
-          <div style="color:var(--text-secondary);font-size:13px;">7:30 AM – 2:00 PM</div>
-        </div>
-        <div class="card" style="padding:16px 18px;">
-          <div style="font-weight:700;color:var(--ink);font-size:14px;">Saturday</div>
-          <div style="color:var(--text-secondary);font-size:13px;">7:30 AM – 12:30 PM</div>
+      <div style="display:grid;grid-template-columns:1fr;gap:12px;text-align:left;max-width:260px;margin:0 auto;">
+        <div class="card" style="padding:16px 18px;text-align:center;">
+          <div style="font-weight:700;color:var(--navy);font-size:15px;margin-bottom:4px;">Monday – Friday</div>
+          <div style="color:var(--text-secondary);font-size:13px;font-weight:600;">7:30 AM – 2:00 PM</div>
+          <div style="color:var(--muted);font-size:12px;margin-top:6px;border-top:1px solid var(--border);padding-top:6px;">Saturday &amp; Sunday: Closed</div>
         </div>
       </div>
       <p style="font-size:12px;color:var(--muted);margin-top:12px;">Hours may vary during holidays and examinations. Please call to confirm.</p>
