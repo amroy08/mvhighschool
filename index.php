@@ -35,8 +35,8 @@ $alumni_feat = mysqli_query($conn, "SELECT * FROM alumni ORDER BY id DESC LIMIT 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <!-- Main stylesheet (includes all design system partials) -->
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="styles.css?v=5">
+  <link rel="stylesheet" href="main.css?v=5">
 
   <style>
   /* ======================================================
@@ -73,6 +73,22 @@ $alumni_feat = mysqli_query($conn, "SELECT * FROM alumni ORDER BY id DESC LIMIT 
 
   .hero-content {
     text-align: left;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 20px;
+    background: rgba(229,164,38,0.20);
+    border: 1px solid rgba(229,164,38,0.35);
+    padding: 6px 16px;
+    border-radius: var(--radius-pill);
   }
 
   .hero-content h1 {
@@ -151,6 +167,7 @@ $alumni_feat = mysqli_query($conn, "SELECT * FROM alumni ORDER BY id DESC LIMIT 
     opacity: 0;
     transition: opacity 1.8s ease-in-out;
     will-change: opacity;
+    filter: blur(4px) brightness(0.55);
   }
 
   /* ---- TRUST STRIP ---- */
@@ -771,7 +788,7 @@ $alumni_feat = mysqli_query($conn, "SELECT * FROM alumni ORDER BY id DESC LIMIT 
 
 <!-- HEADER -->
 <header></header>
-<script src="load-header.js?v=3" defer></script>
+<script src="load-header.js?v=5?v=5" defer></script>
 
 <!-- Success / Error banners from form submission -->
 <?php if(isset($_GET['success'])): ?>
@@ -1430,7 +1447,7 @@ while($al = mysqli_fetch_assoc($alumni_feat)) {
 </div>
 
 <!-- SCRIPTS -->
-<script src="footer.js" defer></script>
+<script src="footer.js?v=5" defer></script>
 
 <script>
 (function() {
