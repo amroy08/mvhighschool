@@ -1,51 +1,151 @@
-// document.addEventListener("DOMContentLoaded", () => {
-//     fetch("header.php")
-//       .then(response => response.text())
-//       .then(data => {
-//           // Load the header HTML
-//           document.querySelector("header").innerHTML = data;
+/**
+ * load-header.js
+ * Fetches premium-header.php and injects it into <header>.
+ * Handles: active link, mobile drawer, scroll shadow, body lock, Escape, focus.
+ */
 
-//           // ⭐ Highlight Active Link
-//           const current = location.pathname.split("/").pop();
-//           document.querySelectorAll(".navlinks a").forEach(link => {
-//               if (link.getAttribute("href") === current) {
-//                   link.classList.add("active-link");
-//               }
-//           });
+(function () {
+  'use strict';
 
-//           // ⭐ MOBILE MENU TOGGLE (must run AFTER header loads)
-//           const toggleBtn = document.getElementById("menuToggle");
-//           const navLinks = document.getElementById("navLinks");
+  const HEADER_URL = 'premium-header.php';
 
-//           if (toggleBtn) {
-//               toggleBtn.addEventListener("click", () => {
-//                   navLinks.classList.toggle("show");
-//               });
-//           }
-//       });
-// });
+  function getCurrentPage() {
+    return location.pathname.split('/').pop() || 'index.php';
+  }
 
+  function highlightActiveLink(headerEl) {
+    const current = getCurrentPage();
+    headerEl.querySelectorAll('.nav-link, .nav-btn').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && href === current) {
+        link.classList.add('active');
+        // Don't override highlight class styling
+        if (!link.classList.contains('highlight')) {
+          link.classList.add('active');
+        }
+      }
+    });
+  }
 
-document.addEventListener("DOMContentLoaded", () => {
-  fetch("premium-header.php")
-    .then(res => res.text())
-    .then(html => {
-      document.querySelector("header").innerHTML = html;
+  function initMobileMenu(headerEl) {
+    const menu    = headerEl.querySelector('#mobileMenu');
+    const toggle  = headerEl.querySelector('#menuToggle');
+    const closeBtn = headerEl.querySelector('#menuClose');
 
-      const current = location.pathname.split("/").pop();
+    if (!menu || !toggle) return;
 
-      document.querySelectorAll(".nav-link, .nav-btn").forEach(link => {
-        if (link.getAttribute("href") === current) {
-          link.classList.add("active");
+    function openMenu() {
+      menu.classList.add('show-menu');
+      toggle.classList.add('active');
+      toggle.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('menu-open');
+      // Focus the close button when drawer opens
+      if (closeBtn) {
+        setTimeout(() => closeBtn.focus(), 50);
+      }
+    }
+
+    function closeMenu() {
+      menu.classList.remove('show-menu');
+      toggle.classList.remove('active');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('menu-open');
+      // Restore focus to toggle button
+      toggle.focus();
+    }
+
+    toggle.addEventListener('click', () => {
+      if (menu.classList.contains('show-menu')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeMenu);
+    }
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.classList.contains('show-menu')) {
+        closeMenu();
+      }
+    });
+
+    // Close after clicking a nav link (for single-page-like navigation)
+    menu.querySelectorAll('.nav-link, .nav-btn, .nav-admission').forEach(link => {
+      link.addEventListener('click', () => {
+        if (menu.classList.contains('show-menu')) {
+          closeMenu();
         }
       });
-
-      const burger = document.querySelector(".hamburger");
-      const menu = document.getElementById("mobileMenu");
-
-      burger?.addEventListener("click", () => {
-        menu.classList.toggle("show-menu");
-        burger.classList.toggle("active");
-      });
     });
-});
+
+    // Close when clicking outside menu on mobile
+    document.addEventListener('click', (e) => {
+      if (
+        menu.classList.contains('show-menu') &&
+        !menu.contains(e.target) &&
+        !toggle.contains(e.target)
+      ) {
+        closeMenu();
+      }
+    });
+  }
+
+  function initScrollShadow(headerEl) {
+    const mainHeader = headerEl.querySelector('.premium-header');
+    if (!mainHeader) return;
+
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          if (window.scrollY > 10) {
+            mainHeader.classList.add('scrolled');
+          } else {
+            mainHeader.classList.remove('scrolled');
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
+  function loadHeader() {
+    const headerEl = document.querySelector('header');
+    if (!headerEl) return;
+
+    fetch(HEADER_URL)
+      .then(res => {
+        if (!res.ok) throw new Error('Header fetch failed: ' + res.status);
+        return res.text();
+      })
+      .then(html => {
+        headerEl.innerHTML = html;
+        highlightActiveLink(headerEl);
+        initMobileMenu(headerEl);
+        initScrollShadow(headerEl);
+      })
+      .catch(err => {
+        // Graceful fallback — minimal nav so page stays usable
+        console.warn('[MV Header]', err.message);
+        headerEl.innerHTML = `
+          <nav style="background:#102D5C;padding:12px 20px;display:flex;gap:16px;flex-wrap:wrap;">
+            <a href="index.php" style="color:#E5A426;font-weight:700;text-decoration:none;">M.V. High School</a>
+            <a href="admissions.php" style="color:#fff;text-decoration:none;">Admissions</a>
+            <a href="contact.php" style="color:#fff;text-decoration:none;">Contact</a>
+          </nav>
+        `;
+      });
+  }
+
+  // Run after DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadHeader);
+  } else {
+    loadHeader();
+  }
+})();

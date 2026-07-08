@@ -1,0 +1,159 @@
+/* ============================================================
+   M.V. HIGH SCHOOL — MAIN STYLESHEET
+   Imports all partials in the correct order.
+   Include this ONE file on every page instead of multiple.
+   ============================================================ */
+
+/* 1. Design tokens (variables) */
+@import url('./css/design-tokens.css');
+
+/* 2. Base reset + typography + layout */
+@import url('./css/base.css');
+
+/* 3. Reusable components */
+@import url('./css/components.css');
+
+/* 4. Header */
+@import url('./css/header.css');
+
+/* 5. Footer */
+@import url('./css/footer.css');
+
+/* ============================================================
+   LEGACY OVERRIDES
+   Keep existing selectors working while we migrate pages.
+   These will be cleaned up as each page is redesigned.
+   ============================================================ */
+
+/* Ensure body background is consistent */
+body {
+  background: var(--bg);
+  font-family: var(--font-body);
+  color: var(--ink);
+  line-height: 1.7;
+}
+
+/* Legacy --primary alias still used in some selectors */
+.section h2 { color: var(--navy); }
+
+/* Legacy styles.css: alumni grid responsive */
+@media (max-width: 768px) {
+  .alumni-section .alumni-grid { grid-template-columns: 1fr; }
+  .footer-links ul { grid-template-columns: 1fr; }
+}
+
+/* Legacy contact-box from styles.css */
+.contact-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  border-top: 3px solid var(--gold);
+}
+.contact-box:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.contact-box h2 { font-size: 18px; margin-bottom: 10px; color: var(--navy); }
+.contact-box h2::after { display: none; }
+.contact-box p { font-size: 15px; color: var(--text-secondary); line-height: 1.7; }
+
+/* Legacy donate-card */
+.donate-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px;
+  box-shadow: var(--shadow);
+  max-width: 600px;
+  margin-top: 24px;
+  border-left: 4px solid var(--gold);
+}
+.donate-card h3 { font-size: 20px; margin-bottom: 18px; color: var(--navy); }
+.donate-card p { font-size: 15px; margin-bottom: 10px; line-height: 1.8; }
+.donate-card strong { color: var(--ink); }
+
+/* Fix undefined --brand variable used in accomplishments.php and accomplishment-details.php */
+:root { --brand: var(--navy); --brand-600: var(--navy-mid); }
+
+/* Legacy hero slideshow */
+.slideshow-container {
+  width: 100%;
+  height: clamp(260px, 30vw, 420px);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+}
+
+.slide-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.8s ease-in-out;
+  will-change: opacity;
+}
+
+.slide-img:first-child { opacity: 1; }
+
+/* Page title utility */
+.page-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 4vw, 2.25rem);
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+/* Legacy updates list */
+.updates-list { display: flex; flex-direction: column; gap: 14px; }
+
+.update-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 18px 22px;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.update-item:hover { transform: translateX(4px); box-shadow: var(--shadow-md); border-left-color: var(--accent); }
+.update-item strong { font-size: 16px; color: var(--ink); font-family: var(--font-body); }
+.update-item span { font-size: 13px; color: var(--muted); white-space: nowrap; }
+
+/* Alumni */
+.alumni-section { padding: clamp(3rem, 6vw, 5rem) 0; }
+.alumni-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+  margin-top: 32px;
+}
+.alumni-card {
+  background: var(--surface);
+  padding: 24px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+  transition: var(--transition);
+  border: 1px solid var(--border);
+}
+.alumni-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-md); border-color: var(--gold); }
+.alumni-photo { width: 100%; height: 280px; object-fit: cover; border-radius: var(--radius-sm); margin-bottom: 16px; }
+.alumni-card h3 { font-size: 20px; font-weight: 800; margin-bottom: 4px; color: var(--ink); font-family: var(--font-heading); }
+.alumni-card .year { color: var(--muted); font-size: 14px; margin-bottom: 8px; }
+.alumni-card .achievement { font-weight: 700; color: var(--accent); margin-bottom: 8px; }
+.alumni-card .message { font-style: italic; color: var(--text-secondary); font-size: 14px; line-height: 1.6; }
+.alumni-card-link { text-decoration: none; color: inherit; display: block; }
+
+/* Utility */
+.text-center { text-align: center; }
+.mt-20 { margin-top: 20px; }
+.mt-40 { margin-top: 40px; }
+.shadow { box-shadow: var(--shadow); }
+.rounded { border-radius: var(--radius); }

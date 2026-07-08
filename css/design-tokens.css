@@ -1,0 +1,133 @@
+/* ============================================================
+   M.V. HIGH SCHOOL — DESIGN TOKENS
+   Single source of truth for all colours, type, spacing, etc.
+   ============================================================ */
+
+/* ---------- GOOGLE FONTS ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* ---- BRAND COLOURS ---- */
+  --navy:          #102D5C;
+  --navy-dark:     #0a1e3d;
+  --navy-mid:      #1C3986;
+  --gold:          #E5A426;
+  --gold-light:    #f0c040;
+  --gold-dark:     #c48a18;
+  --gold-soft:     rgba(229, 164, 38, 0.12);
+  --gold-soft-md:  rgba(229, 164, 38, 0.20);
+  --ivory:         #FAF7F0;
+  --blue-bg:       #EEF4FB;
+  --blue-bg-dark:  #dce9f6;
+
+  /* ---- ALIAS for backward compat with styles.css vars ---- */
+  --primary:       var(--navy);
+  --primary-light: var(--navy-mid);
+  --primary-soft:  #1a3a5c;
+  --primary-rgb:   16, 45, 92;
+  --accent:        #2563eb;
+  --accent-light:  #3b82f6;
+
+  /* ---- TEXT & SURFACES ---- */
+  --ink:           #172033;
+  --text:          #172033;
+  --text-secondary:#667085;
+  --muted:         #94a3b8;
+  --surface:       #ffffff;
+  --surface-alt:   #f8fafc;
+  --bg:            #EEF4FB;
+  --border:        #E2E8F0;
+  --border-light:  #f1f5f9;
+
+  /* ---- SEMANTIC ---- */
+  --success:       #059669;
+  --success-light: #10b981;
+  --warning:       #d97706;
+  --error:         #dc2626;
+  --error-light:   #ef4444;
+
+  /* ---- TYPOGRAPHY ---- */
+  --font-heading:  'Playfair Display', Georgia, serif;
+  --font-body:     'Manrope', 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* ---- TYPE SCALE ---- */
+  --text-xs:   0.75rem;   /* 12px */
+  --text-sm:   0.875rem;  /* 14px */
+  --text-base: 1rem;      /* 16px */
+  --text-lg:   1.125rem;  /* 18px */
+  --text-xl:   1.25rem;   /* 20px */
+  --text-2xl:  1.5rem;    /* 24px */
+  --text-3xl:  1.875rem;  /* 30px */
+  --text-4xl:  2.25rem;   /* 36px */
+  --text-5xl:  3rem;      /* 48px */
+
+  /* ---- SPACING ---- */
+  --sp-1:  0.25rem;
+  --sp-2:  0.5rem;
+  --sp-3:  0.75rem;
+  --sp-4:  1rem;
+  --sp-5:  1.25rem;
+  --sp-6:  1.5rem;
+  --sp-8:  2rem;
+  --sp-10: 2.5rem;
+  --sp-12: 3rem;
+  --sp-16: 4rem;
+  --sp-20: 5rem;
+  --sp-24: 6rem;
+
+  /* ---- BORDER RADIUS ---- */
+  --radius-xs:   4px;
+  --radius-sm:   8px;
+  --radius:      14px;
+  --radius-md:   18px;
+  --radius-lg:   24px;
+  --radius-xl:   32px;
+  --radius-pill: 9999px;
+
+  /* ---- SHADOWS ---- */
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-sm: 0 1px 4px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow:    0 4px 14px rgba(0,0,0,0.06), 0 2px 6px rgba(0,0,0,0.04);
+  --shadow-md: 0 8px 25px rgba(0,0,0,0.08), 0 4px 10px rgba(0,0,0,0.04);
+  --shadow-lg: 0 20px 50px rgba(0,0,0,0.10), 0 8px 20px rgba(0,0,0,0.06);
+  --shadow-gold: 0 4px 20px rgba(229,164,38,0.25);
+  --shadow-navy: 0 4px 20px rgba(16,45,92,0.25);
+
+  /* ---- CONTAINER ---- */
+  --container-max: 1280px;
+  --container-pad: 24px;
+  --container-pad-md: 32px;
+  --container-pad-lg: 48px;
+
+  /* ---- HEADER HEIGHTS ---- */
+  --utility-bar-h:  40px;
+  --identity-bar-h: 96px;
+  --nav-bar-h:      56px;
+  --header-total-h: calc(var(--utility-bar-h) + var(--identity-bar-h) + var(--nav-bar-h));
+
+  /* ---- TRANSITIONS ---- */
+  --transition:        0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast:   0.15s ease;
+  --transition-spring: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ---- Z-INDEX ---- */
+  --z-header:   9000;
+  --z-modal:    9500;
+  --z-toast:    9999;
+  --z-lightbox: 10000;
+}
+
+/* ---- REDUCED MOTION ---- */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition:        0.01ms !important;
+    --transition-fast:   0.01ms !important;
+    --transition-spring: 0.01ms !important;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

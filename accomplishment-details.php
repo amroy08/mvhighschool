@@ -1,109 +1,90 @@
 <?php
 include "db.php";
+include "config.php";
 
-$slug = $_GET['slug'];
-$res = mysqli_query($conn, "SELECT * FROM accomplishments WHERE slug='$slug'");
-$acc = mysqli_fetch_assoc($res);
+// SQL injection fix: use prepared statement — preserving all data logic
+$slug = isset($_GET['slug']) ? trim($_GET['slug']) : '';
+if (empty($slug)) { die("<h2>Accomplishment not found</h2>"); }
 
-if(!$acc){ die("<h2>Accomplishment not found</h2>"); }
+$stmt = mysqli_prepare($conn, "SELECT * FROM accomplishments WHERE slug = ?");
+mysqli_stmt_bind_param($stmt, "s", $slug);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+$acc    = mysqli_fetch_assoc($result);
+
+if (!$acc) { die("<h2>Accomplishment not found</h2>"); }
+
+$seoTitle    = htmlspecialchars($acc['title']) . " | M.V. High School";
+$seoCanonical = BASE_URL . "/accomplishment-details.php?slug=" . urlencode($slug);
 ?>
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title><?= $acc['title'] ?> | M.V. High School</title>
-<link rel="icon" type="image/png" href="/favicon.png">
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="premium-header.css">
-
-<style>
-.detail-box {
-  background: #ffffff;
-  padding: 30px;
-  border-radius: 18px;
-  box-shadow: 0 5px 18px rgba(0,0,0,0.08);
-  max-width: 850px;
-  margin: auto;
-}
-
-.detail-box h2 {
-  margin-top: 0;
-  font-size: 30px;
-  font-weight: 800;
-}
-
-.detail-box p {
-  font-size: 17px;
-  line-height: 1.7;
-  color: #334155;
-}
-
-.back-btn {
-  display: inline-block;
-  margin-top: 25px;
-  padding: 10px 18px;
-  background: var(--brand);
-  color: #fff;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.back-btn:hover {
-  background: var(--brand-600);
-}
-
-@media (max-width: 768px) {
-
-  .detail-box {
-    padding: 18px;
-    border-radius: 14px;
-  }
-
-  .detail-box h2 {
-    font-size: 22px;
-    line-height: 1.3;
-  }
-
-  .detail-box p {
-    font-size: 15px;
-  }
-
-  .detail-box img {
-    max-width: 100%;
-    height: auto;
-  }
-}
-
-</style>
-
+  <meta charset="utf-8">
+  <title><?= $seoTitle ?></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="<?= htmlspecialchars(mb_substr($acc['description'] ?? '', 0, 155)) ?>">
+  <link rel="canonical" href="<?= $seoCanonical ?>">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
 
 <header></header>
-<script src="load-header.js"></script>
+<script src="load-header.js?v=3" defer></script>
 
-<section class="section">
-<div class="container">
-
-  <div class="detail-box">
-      <h2><?= $acc['title'] ?></h2>
-
-      <?php if($acc['image'] != ""): ?>
-        <img src="<?= htmlspecialchars($acc['image']) ?>" 
-     style="width:100%; max-width:700px; border-radius:14px; margin-bottom:20px;">
-
-      <?php endif; ?>
-
-      <p><?= nl2br($acc['description']) ?></p>
-
-      <a href="accomplishments.php" class="back-btn">← Back to Accomplishments</a>
+<!-- PAGE HERO -->
+<section class="page-hero" aria-label="Accomplishment detail hero">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.php">Home</a>
+      <span class="sep" aria-hidden="true">›</span>
+      <a href="accomplishments.php">Accomplishments</a>
+      <span class="sep" aria-hidden="true">›</span>
+      <span class="current" aria-current="page">Detail</span>
+    </nav>
+    <h1><?= htmlspecialchars($acc['title']) ?></h1>
   </div>
-
-</div>
 </section>
 
-<script src="footer.js"></script>
+<main id="main-content">
+
+<section class="section" style="background:var(--surface);">
+  <div class="container">
+
+    <a href="accomplishments.php" class="btn btn-ghost btn-sm" style="margin-bottom:20px;">← Back to Accomplishments</a>
+
+    <div class="card" style="max-width:850px;margin:0 auto;padding:32px;">
+
+      <?php if(!empty($acc['image'])): ?>
+        <img
+          src="<?= htmlspecialchars($acc['image']) ?>"
+          alt="<?= htmlspecialchars($acc['title']) ?>"
+          style="width:100%;max-width:700px;border-radius:var(--radius);margin-bottom:24px;box-shadow:var(--shadow);"
+          loading="lazy"
+          width="700"
+          height="400"
+        >
+      <?php endif; ?>
+
+      <div style="font-size:17px;line-height:1.8;color:var(--text-secondary);">
+        <?= nl2br(htmlspecialchars($acc['description'])) ?>
+      </div>
+
+      <div style="margin-top:24px;">
+        <a href="accomplishments.php" class="btn btn-secondary btn-sm">← Back to All Accomplishments</a>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<script src="footer.js" defer></script>
 </body>
 </html>

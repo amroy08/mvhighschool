@@ -1,277 +1,265 @@
-<?php include "db.php"; ?>
+<?php
+include "db.php";
+include "config.php";
+
+$seoTitle       = "Faculty | M.V. High School, Charni Road, Mumbai";
+$seoDescription = "Meet the experienced and qualified faculty of M.V. High School, Charni Road, Mumbai — our teaching and non-teaching staff.";
+$seoKeywords    = "M.V. High School faculty, school teachers Mumbai, teaching staff Charni Road";
+$seoCanonical   = BASE_URL . "/faculty.php";
+$seoImage       = BASE_URL . "/assets/PamphletImage.jpg";
+$seoType        = "website";
+
+/* ---- DB — unchanged ---- */
+$teaching    = mysqli_query($conn, "SELECT * FROM faculty WHERE type='Teaching' ORDER BY id ASC");
+$nonteaching = mysqli_query($conn, "SELECT * FROM faculty WHERE type='Non-Teaching' ORDER BY id ASC");
+
+$teaching_arr    = [];
+$nonteaching_arr = [];
+while($r = mysqli_fetch_assoc($teaching))    $teaching_arr[]    = $r;
+while($r = mysqli_fetch_assoc($nonteaching)) $nonteaching_arr[] = $r;
+?>
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Faculty | M.V. High School</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <?php include "seo.php"; ?>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="main.css">
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="premium-header.css">
 
   <style>
-    /* ==============================
-       FACULTY - PREMIUM TABS UI
-       ============================== */
+  .faculty-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 22px;
+    margin-top: 16px;
+  }
 
-    .tabs-wrap{
-      margin-top: 18px;
-      background: rgba(255,255,255,.75);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 10px;
-      box-shadow: var(--shadow);
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      position: sticky;
-      top: 78px; /* works nicely under your header */
-      z-index: 5;
-      backdrop-filter: blur(10px);
-    }
+  .faculty-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 16px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+  }
 
-    .tab-btn{
-      appearance: none;
-      border: 1px solid var(--border);
-      background: #fff;
-      color: var(--primary);
-      font-weight: 800;
-      padding: 10px 14px;
-      border-radius: 14px;
-      cursor: pointer;
-      transition: .25s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      user-select: none;
-    }
+  .faculty-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--gold);
+  }
 
-    .tab-btn:hover{
-      transform: translateY(-1px);
-      border-color: var(--gold);
-    }
+  .faculty-photo {
+    width: 90px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    margin: 0 auto 14px;
+    border: 2px solid var(--border);
+    display: block;
+    background: var(--blue-bg);
+  }
 
-    .tab-btn.active{
-      background: linear-gradient(135deg, rgba(255,215,0,.20), rgba(0,0,0,0.02));
-      border-color: var(--gold);
-      box-shadow: 0 10px 22px rgba(0,0,0,.08);
-    }
+  .faculty-photo-placeholder {
+    width: 90px;
+    height: 100px;
+    border-radius: var(--radius-sm);
+    background: linear-gradient(135deg, var(--blue-bg), var(--border-light));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    margin: 0 auto 14px;
+  }
 
-    .tab-pill{
-      font-size: 12px;
-      font-weight: 900;
-      padding: 3px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      background: rgba(255,255,255,.8);
-    }
+  .faculty-card h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+    text-transform: capitalize;
+  }
 
-    .panel{
-      display: none;
-      margin-top: 18px;
-      animation: fadeUp .25s ease both;
-    }
+  .faculty-card .desig {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--navy-mid);
+    margin-bottom: 6px;
+  }
 
-    .panel.active{ display:block; }
+  .faculty-card .meta {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
 
-    @keyframes fadeUp{
-      from{ opacity:0; transform: translateY(8px); }
-      to{ opacity:1; transform: translateY(0); }
-    }
-
-    /* Grid */
-    .faculty-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-      margin-top: 12px;
-    }
-
-    /* Card */
-    .faculty-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 20px;
-      box-shadow: var(--shadow);
-      transition: .3s ease;
-    }
-
-    .faculty-card:hover {
-      transform: translateY(-6px);
-      border-color: var(--gold);
-    }
-
-    .faculty-photo {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-      border-radius: var(--radius);
-      margin-bottom: 12px;
-    }
-
-    .faculty-card h3 {
-      font-size: 18px;
-      font-weight: 900;
-      margin-bottom: 6px;
-      color: var(--primary);
-      text-transform: uppercase;
-      letter-spacing: .2px;
-    }
-
-    .faculty-card p { margin: 4px 0; }
-    .muted { color: var(--muted); font-size: 14px; }
-
-    .empty-note {
-      padding: 14px;
-      background: #fff;
-      border: 1px dashed var(--border);
-      border-radius: 12px;
-      color: var(--muted);
-      margin-top: 14px;
-    }
-
-    /* Small screens */
-    @media(max-width: 640px){
-      .tabs-wrap{ top: 70px; }
-      .tab-btn{ width: 100%; justify-content: space-between; }
-    }
+  .faculty-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 22px;
+    height: 22px;
+    background: var(--gold-soft-md);
+    border: 1px solid var(--gold-soft-md);
+    border-radius: var(--radius-pill);
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--gold-dark);
+    padding: 0 6px;
+    margin-left: 6px;
+  }
   </style>
 </head>
-
 <body>
 
 <header></header>
-<script src="load-header.js"></script>
+<script src="load-header.js?v=3" defer></script>
 
-<section class="section">
+<!-- PAGE HERO -->
+<section class="page-hero" aria-label="Faculty page hero">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.php">Home</a>
+      <span class="sep" aria-hidden="true">›</span>
+      <span class="current" aria-current="page">Faculty</span>
+    </nav>
+    <h1>Our Faculty</h1>
+    <p class="lead">Dedicated educators committed to every student&rsquo;s academic and personal growth.</p>
+  </div>
+</section>
+
+<main id="main-content">
+
+<!-- TAB SWITCHER -->
+<section class="section" style="background:var(--surface);">
   <div class="container">
 
-    <h2>Our Faculty</h2>
-    <p class="lead">Dedicated educators shaping minds and inspiring excellence.</p>
-
-    <?php
-      function countStaff($conn, $type){
-        $safeType = mysqli_real_escape_string($conn, $type);
-        $q = mysqli_query($conn, "SELECT COUNT(*) AS c FROM faculty WHERE staff_type='$safeType'");
-        $r = mysqli_fetch_assoc($q);
-        return (int)$r['c'];
-      }
-
-      $teachingCount = countStaff($conn, "Teaching");
-      $nonTeachingCount = countStaff($conn, "Non-Teaching");
-    ?>
-
-    <!-- Tabs -->
-    <div class="tabs-wrap" role="tablist" aria-label="Faculty tabs">
-      <button class="tab-btn active" id="tab-teaching" data-target="panel-teaching" type="button" role="tab" aria-selected="true">
-        Teaching Staff
-        <span class="tab-pill"><?= $teachingCount ?></span>
+    <div class="tabs-wrap" role="tablist" aria-label="Faculty categories" style="justify-content:flex-start;">
+      <button
+        class="tab-btn active"
+        id="tab-teaching"
+        onclick="switchTab('teaching')"
+        role="tab"
+        aria-selected="true"
+        aria-controls="panel-teaching"
+        type="button"
+      >
+        Teaching Staff <span class="faculty-count"><?= count($teaching_arr) ?></span>
       </button>
-
-      <button class="tab-btn" id="tab-nonteaching" data-target="panel-nonteaching" type="button" role="tab" aria-selected="false">
-        Non-Teaching Staff
-        <span class="tab-pill"><?= $nonTeachingCount ?></span>
+      <button
+        class="tab-btn"
+        id="tab-nonteaching"
+        onclick="switchTab('nonteaching')"
+        role="tab"
+        aria-selected="false"
+        aria-controls="panel-nonteaching"
+        type="button"
+      >
+        Non-Teaching Staff <span class="faculty-count"><?= count($nonteaching_arr) ?></span>
       </button>
     </div>
 
     <!-- Teaching Panel -->
-    <div class="panel active" id="panel-teaching" role="tabpanel" aria-labelledby="tab-teaching">
-
+    <div id="panel-teaching" class="panel active" role="tabpanel" aria-labelledby="tab-teaching">
+      <?php if(count($teaching_arr) > 0): ?>
       <div class="faculty-grid">
-        <?php
-          $res = mysqli_query($conn, "SELECT * FROM faculty WHERE staff_type='Teaching' ORDER BY id ASC");
-          if(mysqli_num_rows($res) == 0){
-            echo "<div class='empty-note'>No Teaching Staff added yet.</div>";
-          } else {
-            while($f = mysqli_fetch_assoc($res)){
-              $img = $f['image']; // e.g. uploads/faculty/xxx.jpg
-              echo "
-              <article class='faculty-card'>
-                ".(!empty($img) ? "<img src='{$img}' class='faculty-photo' onerror=\"this.style.display='none'\">" : "")."
-                <h3>{$f['name']}</h3>
-                <p><strong>{$f['designation']}</strong></p>
-                <p class='muted'>{$f['qualification']}</p>
-                <p class='muted'>{$f['experience']}</p>
-              </article>
-              ";
-            }
-          }
-        ?>
+        <?php foreach($teaching_arr as $f): ?>
+        <div class="faculty-card">
+          <?php if(!empty($f['photo'])): ?>
+            <img
+              src="assets/<?= htmlspecialchars($f['photo']) ?>"
+              class="faculty-photo"
+              alt="<?= htmlspecialchars($f['name']) ?> — <?= htmlspecialchars($f['designation'] ?? 'Teacher') ?>"
+              loading="lazy"
+              width="90"
+              height="100"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+            >
+            <div class="faculty-photo-placeholder" style="display:none;">👤</div>
+          <?php else: ?>
+            <div class="faculty-photo-placeholder">👤</div>
+          <?php endif; ?>
+          <h3><?= htmlspecialchars($f['name']) ?></h3>
+          <?php if(!empty($f['designation'])): ?>
+            <p class="desig"><?= htmlspecialchars($f['designation']) ?></p>
+          <?php endif; ?>
+          <div class="meta">
+            <?php if(!empty($f['qualification'])): ?>
+              <div><?= htmlspecialchars($f['qualification']) ?></div>
+            <?php endif; ?>
+            <?php if(!empty($f['experience'])): ?>
+              <div><?= htmlspecialchars($f['experience']) ?> exp.</div>
+            <?php endif; ?>
+          </div>
+        </div>
+        <?php endforeach; ?>
       </div>
+      <?php else: ?>
+      <div class="empty-state" style="margin-top:20px;"><p>Teaching staff information is being updated.</p></div>
+      <?php endif; ?>
     </div>
 
     <!-- Non-Teaching Panel -->
-    <div class="panel" id="panel-nonteaching" role="tabpanel" aria-labelledby="tab-nonteaching">
-
+    <div id="panel-nonteaching" class="panel" role="tabpanel" aria-labelledby="tab-nonteaching">
+      <?php if(count($nonteaching_arr) > 0): ?>
       <div class="faculty-grid">
-        <?php
-          $res2 = mysqli_query($conn, "SELECT * FROM faculty WHERE staff_type='Non-Teaching' ORDER BY id ASC");
-          if(mysqli_num_rows($res2) == 0){
-            echo "<div class='empty-note'>No Non-Teaching Staff added yet.</div>";
-          } else {
-            while($f = mysqli_fetch_assoc($res2)){
-              $img = $f['image'];
-              echo "
-              <article class='faculty-card'>
-                ".(!empty($img) ? "<img src='{$img}' class='faculty-photo' onerror=\"this.style.display='none'\">" : "")."
-                <h3>{$f['name']}</h3>
-                <p><strong>{$f['designation']}</strong></p>
-                <p class='muted'>{$f['qualification']}</p>
-                <p class='muted'>{$f['experience']}</p>
-              </article>
-              ";
-            }
-          }
-        ?>
+        <?php foreach($nonteaching_arr as $f): ?>
+        <div class="faculty-card">
+          <?php if(!empty($f['photo'])): ?>
+            <img
+              src="assets/<?= htmlspecialchars($f['photo']) ?>"
+              class="faculty-photo"
+              alt="<?= htmlspecialchars($f['name']) ?> — <?= htmlspecialchars($f['designation'] ?? 'Staff') ?>"
+              loading="lazy"
+              width="90"
+              height="100"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+            >
+            <div class="faculty-photo-placeholder" style="display:none;">👤</div>
+          <?php else: ?>
+            <div class="faculty-photo-placeholder">👤</div>
+          <?php endif; ?>
+          <h3><?= htmlspecialchars($f['name']) ?></h3>
+          <?php if(!empty($f['designation'])): ?>
+            <p class="desig"><?= htmlspecialchars($f['designation']) ?></p>
+          <?php endif; ?>
+          <div class="meta">
+            <?php if(!empty($f['qualification'])): ?>
+              <div><?= htmlspecialchars($f['qualification']) ?></div>
+            <?php endif; ?>
+          </div>
+        </div>
+        <?php endforeach; ?>
       </div>
+      <?php else: ?>
+      <div class="empty-state" style="margin-top:20px;"><p>Non-teaching staff information is being updated.</p></div>
+      <?php endif; ?>
     </div>
 
   </div>
 </section>
 
-<script src="footer.js"></script>
+</main>
 
+<script src="footer.js" defer></script>
 <script>
-  // ==========================
-  // Tabs logic + URL hash support
-  // ==========================
-  const tabs = document.querySelectorAll(".tab-btn");
-  const panels = document.querySelectorAll(".panel");
-
-  function activate(tabId, updateHash=true){
-    tabs.forEach(t => {
-      const active = (t.id === tabId);
-      t.classList.toggle("active", active);
-      t.setAttribute("aria-selected", active ? "true" : "false");
-    });
-
-    panels.forEach(p => p.classList.remove("active"));
-
-    const tab = document.getElementById(tabId);
-    const target = tab.getAttribute("data-target");
-    document.getElementById(target).classList.add("active");
-
-    if(updateHash){
-      const hash = tabId === "tab-nonteaching" ? "#nonteaching" : "#teaching";
-      history.replaceState(null, "", hash);
-    }
-
-    // Smooth scroll to tabs on mobile
-    document.querySelector(".tabs-wrap").scrollIntoView({behavior:"smooth", block:"start"});
-  }
-
-  tabs.forEach(t => t.addEventListener("click", () => activate(t.id)));
-
-  // If someone opens directly with hash
-  const hash = window.location.hash.toLowerCase();
-  if(hash === "#nonteaching"){
-    activate("tab-nonteaching", false);
-  } else if(hash === "#teaching"){
-    activate("tab-teaching", false);
-  }
+function switchTab(which) {
+  ['teaching','nonteaching'].forEach(function(t) {
+    var btn   = document.getElementById('tab-' + t);
+    var panel = document.getElementById('panel-' + t);
+    var isActive = t === which;
+    btn.classList.toggle('active', isActive);
+    btn.setAttribute('aria-selected', String(isActive));
+    panel.classList.toggle('active', isActive);
+  });
+}
 </script>
-
 </body>
 </html>
