@@ -720,9 +720,9 @@ $alumni_feat = mysqli_query($conn, "SELECT * FROM alumni ORDER BY id DESC LIMIT 
   /* ---- ADMISSION POPUP ---- */
   .admission-layout {
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 24px;
-    max-width: 900px !important;
+    grid-template-columns: 1fr 1.35fr;
+    gap: 28px;
+    max-width: 1120px !important;
     max-height: 90vh;
     overflow: hidden;
   }
@@ -1426,11 +1426,11 @@ while($al = mysqli_fetch_assoc($alumni_feat)) {
     <!-- RIGHT: PAMPHLET -->
     <div class="admission-pamphlet">
       <img
-        src="assets/PamphletImage.jpg"
-        alt="M.V. High School admission pamphlet — English Medium and Hindi Medium"
+        src="assets/PamphletImageMerged.png?v=5"
+        alt="M.V. High School and Lumora Montessori admission pamphlets"
         loading="lazy"
-        width="380"
-        height="520"
+        width="600"
+        height="420"
       >
     </div>
 
