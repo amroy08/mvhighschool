@@ -27,8 +27,8 @@ $values_row  = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM about_mvv W
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="main.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="main.css">
 
   <style>
   /* ============ ABOUT PAGE SPECIFIC ============ */

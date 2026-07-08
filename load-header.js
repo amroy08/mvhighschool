@@ -73,6 +73,29 @@
       }
     });
 
+    // Trap focus inside the open menu
+    document.addEventListener('keydown', (e) => {
+      if (!menu.classList.contains('show-menu')) return;
+      if (e.key === 'Tab') {
+        const focusables = menu.querySelectorAll('a, button, [tabindex="0"]');
+        if (focusables.length === 0) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+
+        if (e.shiftKey) { // Shift + Tab
+          if (document.activeElement === first || !menu.contains(document.activeElement)) {
+            last.focus();
+            e.preventDefault();
+          }
+        } else { // Tab
+          if (document.activeElement === last || !menu.contains(document.activeElement)) {
+            first.focus();
+            e.preventDefault();
+          }
+        }
+      }
+    });
+
     // Close after clicking a nav link (for single-page-like navigation)
     menu.querySelectorAll('.nav-link, .nav-btn, .nav-admission').forEach(link => {
       link.addEventListener('click', () => {

@@ -440,6 +440,17 @@ body.menu-open { overflow: hidden; }
 
 /* ==================== HEADER CLS PREVENTION ==================== */
 /* Reserve space while header loads via JS fetch */
+header {
+  display: block;
+  min-height: 201px;
+  background: #ffffff;
+}
+@media (max-width: 900px) {
+  header {
+    min-height: 76px;
+  }
+}
+
 .header-placeholder {
   width: 100%;
   background: var(--navy-dark);
