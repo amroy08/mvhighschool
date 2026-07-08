@@ -22,8 +22,8 @@ $note   = "Due to unavoidable circumstances, there may be changes in the schedul
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=6">
-  <link rel="stylesheet" href="main.css?v=6">
+  <link rel="stylesheet" href="styles.css?v=7">
+  <link rel="stylesheet" href="main.css?v=7">
 
   <style>
   .news-events-grid {
@@ -105,7 +105,7 @@ $note   = "Due to unavoidable circumstances, there may be changes in the schedul
 <body>
 
 <header></header>
-<script src="load-header.js?v=6" defer></script>
+<script src="load-header.js?v=7" defer></script>
 
 <!-- PAGE HERO -->
 <section class="page-hero" aria-label="News and Events hero">
@@ -183,6 +183,6 @@ $note   = "Due to unavoidable circumstances, there may be changes in the schedul
 
 </main>
 
-<script src="footer.js?v=6" defer></script>
+<script src="footer.js?v=7" defer></script>
 </body>
 </html>

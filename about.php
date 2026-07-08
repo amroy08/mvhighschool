@@ -27,8 +27,8 @@ $values_row  = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM about_mvv W
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=6">
-  <link rel="stylesheet" href="main.css?v=6">
+  <link rel="stylesheet" href="styles.css?v=7">
+  <link rel="stylesheet" href="main.css?v=7">
 
   <style>
   /* ============ ABOUT PAGE SPECIFIC ============ */
@@ -361,7 +361,7 @@ $values_row  = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM about_mvv W
 <body>
 
 <header></header>
-<script src="load-header.js?v=6" defer></script>
+<script src="load-header.js?v=7" defer></script>
 
 <!-- PAGE HERO -->
 <section class="page-hero" aria-label="About page hero">
@@ -591,6 +591,6 @@ $values_row  = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM about_mvv W
 
 </main>
 
-<script src="footer.js?v=6" defer></script>
+<script src="footer.js?v=7" defer></script>
 </body>
 </html>

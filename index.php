@@ -35,8 +35,8 @@ $alumni_feat = mysqli_query($conn, "SELECT * FROM alumni ORDER BY id DESC LIMIT 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <!-- Main stylesheet (includes all design system partials) -->
-  <link rel="stylesheet" href="styles.css?v=6">
-  <link rel="stylesheet" href="main.css?v=6">
+  <link rel="stylesheet" href="styles.css?v=7">
+  <link rel="stylesheet" href="main.css?v=7">
 
   <style>
   /* ======================================================
@@ -793,7 +793,7 @@ $alumni_feat = mysqli_query($conn, "SELECT * FROM alumni ORDER BY id DESC LIMIT 
 
 <!-- HEADER -->
 <header></header>
-<script src="load-header.js?v=6" defer></script>
+<script src="load-header.js?v=7" defer></script>
 
 <!-- Success / Error banners from form submission -->
 <?php if(isset($_GET['success'])): ?>
@@ -944,7 +944,7 @@ $alumni_feat = mysqli_query($conn, "SELECT * FROM alumni ORDER BY id DESC LIMIT 
 
       <div class="welcome-image">
         <img
-          src="assets/PamphletImageMerged.png?v=6"
+          src="assets/PamphletImageMerged.png?v=7"
           alt="M.V. High School and Lumora Montessori admission pamphlets"
           loading="lazy"
           width="560"
@@ -1430,7 +1430,7 @@ while($al = mysqli_fetch_assoc($alumni_feat)) {
     <!-- RIGHT: PAMPHLET -->
     <div class="admission-pamphlet">
       <img
-        src="assets/PamphletImageMerged.png?v=6"
+        src="assets/PamphletImageMerged.png?v=7"
         alt="M.V. High School and Lumora Montessori admission pamphlets"
         loading="lazy"
         width="600"
@@ -1453,7 +1453,7 @@ while($al = mysqli_fetch_assoc($alumni_feat)) {
 </div>
 
 <!-- SCRIPTS -->
-<script src="footer.js?v=6" defer></script>
+<script src="footer.js?v=7" defer></script>
 
 <script>
 (function() {

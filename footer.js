@@ -161,6 +161,21 @@
     `;
 
     document.body.insertAdjacentHTML('beforeend', html);
+
+    // Inject floating contact buttons (Email & WhatsApp)
+    const floatersHtml = `
+      <div class="floating-contact-container">
+        <!-- Email Floater -->
+        <a href="mailto:principalmvhs70@gmail.com?subject=Enquiry%20regarding%20M.V.%20High%20School" class="floating-btn email" aria-label="Email school enquiry" title="Email Us">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+        <!-- WhatsApp Floater -->
+        <a href="https://wa.me/918655283413?text=Hello,%20I%20have%20an%20admission%20enquiry%20regarding%20M.V.%20High%20School." target="_blank" rel="noopener noreferrer" class="floating-btn whatsapp" aria-label="WhatsApp school enquiry" title="Chat on WhatsApp">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.012 2c-5.506 0-9.987 4.481-9.987 9.988 0 1.761.456 3.473 1.328 4.984l-1.412 5.155 5.277-1.385c1.455.794 3.09 1.214 4.794 1.214 5.506 0 9.987-4.481 9.987-9.988 0-5.506-4.481-9.988-9.987-9.988zm4.811 14.124c-.21.589-1.22 1.134-1.685 1.186-.454.052-.907.082-2.715-.628-2.186-.856-3.568-3.083-3.678-3.23-.11-.147-.894-1.186-.894-2.26 0-1.074.562-1.603.762-1.813.2-.21.439-.263.587-.263.148 0 .295.003.42.009.131.006.307-.05.48.362.181.432.618 1.506.671 1.613.053.107.088.232.017.378-.07.147-.107.252-.22.388-.113.136-.237.305-.339.409-.115.115-.235.241-.1.472.136.23.602.993 1.293 1.61.888.793 1.636 1.039 1.869 1.154.232.115.368.098.502-.057.135-.155.576-.671.728-.899.153-.228.307-.193.518-.115.213.078 1.348.636 1.58.752.232.115.388.173.444.271.056.098.056.568-.154 1.157z"/></svg>
+        </a>
+      </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', floatersHtml);
   }
 
   if (document.readyState === 'loading') {
