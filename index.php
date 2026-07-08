@@ -252,9 +252,11 @@ $alumni_feat = mysqli_query($conn, "SELECT * FROM alumni ORDER BY id DESC LIMIT 
 
   .welcome-image img {
     width: 100%;
-    height: clamp(280px, 35vw, 420px);
-    object-fit: cover;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: contain;
     transition: transform 0.5s ease;
+    background: #fff;
   }
 
   .welcome-image:hover img { transform: scale(1.03); }
@@ -942,8 +944,8 @@ $alumni_feat = mysqli_query($conn, "SELECT * FROM alumni ORDER BY id DESC LIMIT 
 
       <div class="welcome-image">
         <img
-          src="assets/PamphletImage.jpg"
-          alt="M.V. High School campus and student activities"
+          src="assets/PamphletImageMerged.png?v=5"
+          alt="M.V. High School and Lumora Montessori admission pamphlets"
           loading="lazy"
           width="560"
           height="420"
