@@ -33,7 +33,7 @@ if (isset($conn) && $conn) {
 <body>
 
 <header></header>
-<script src="load-header.js?v=5?v=5" defer></script>
+<script src="load-header.js?v=5" defer></script>
 
 <!-- Hidden SEO content -->
 <div class="seo-hidden-content" aria-hidden="true">

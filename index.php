@@ -45,35 +45,35 @@ $alumni_feat = mysqli_query($conn, "SELECT * FROM alumni ORDER BY id DESC LIMIT 
 
   /* ---- HERO ---- */
   .hero-section {
-    position: relative;
-    background: #000;
-    min-height: clamp(520px, 85vh, 760px);
+    background: linear-gradient(160deg, #0c1f45 0%, var(--navy) 50%, #1C3986 100%);
+    min-height: clamp(480px, 70vh, 680px);
     display: flex;
     align-items: center;
+    position: relative;
     overflow: hidden;
-    padding: clamp(3rem, 8vw, 6rem) 0;
+    padding: clamp(2.5rem, 6vw, 5rem) 0;
   }
 
   .hero-section::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(12, 31, 69, 0.76) 0%, rgba(16, 45, 92, 0.82) 100%);
-    z-index: 1;
+    background:
+      radial-gradient(ellipse 60% 80% at 70% 50%, rgba(229,164,38,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 10% 20%, rgba(255,255,255,0.03) 0%, transparent 60%);
     pointer-events: none;
   }
 
   .hero-wrap {
-    display: block;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: clamp(2rem, 4vw, 4rem);
     position: relative;
-    z-index: 2;
-    max-width: 820px;
-    width: 100%;
+    z-index: 1;
   }
 
-  .hero-content {
-    text-align: left;
-  }
+  .hero-content {}
 
   .hero-eyebrow {
     display: inline-flex;
@@ -84,22 +84,21 @@ $alumni_feat = mysqli_query($conn, "SELECT * FROM alumni ORDER BY id DESC LIMIT 
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--gold-light);
-    margin-bottom: 20px;
-    background: rgba(229,164,38,0.20);
-    border: 1px solid rgba(229,164,38,0.35);
-    padding: 6px 16px;
+    margin-bottom: 16px;
+    background: rgba(229,164,38,0.15);
+    border: 1px solid rgba(229,164,38,0.25);
+    padding: 5px 14px;
     border-radius: var(--radius-pill);
   }
 
   .hero-content h1 {
     font-family: var(--font-heading);
-    font-size: clamp(2.25rem, 5.5vw, 3.5rem);
+    font-size: clamp(2rem, 5vw, 3.25rem);
     font-weight: 800;
     color: #fff;
-    line-height: 1.15;
-    margin-bottom: 20px;
+    line-height: 1.18;
+    margin-bottom: 18px;
     letter-spacing: -0.02em;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
   }
 
   .hero-content h1 em {
@@ -108,31 +107,30 @@ $alumni_feat = mysqli_query($conn, "SELECT * FROM alumni ORDER BY id DESC LIMIT 
   }
 
   .hero-subtitle {
-    font-size: clamp(1.05rem, 1.8vw, 1.2rem);
-    color: rgba(255,255,255,0.88);
-    line-height: 1.75;
-    margin-bottom: 32px;
-    max-width: 680px;
-    text-shadow: 0 1px 5px rgba(0,0,0,0.2);
+    font-size: clamp(1rem, 1.8vw, 1.15rem);
+    color: rgba(255,255,255,0.75);
+    line-height: 1.7;
+    margin-bottom: 28px;
+    max-width: 520px;
   }
 
   .hero-pills {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 32px;
+    gap: 8px;
+    margin-bottom: 28px;
   }
 
   .hero-pill {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    font-size: 12.5px;
+    font-size: 12px;
     font-weight: 600;
-    color: #fff;
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.25);
-    padding: 6px 14px;
+    color: rgba(255,255,255,0.80);
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 5px 12px;
     border-radius: var(--radius-pill);
   }
 
@@ -144,18 +142,23 @@ $alumni_feat = mysqli_query($conn, "SELECT * FROM alumni ORDER BY id DESC LIMIT 
 
   .hero-actions {
     display: flex;
-    gap: 14px;
+    gap: 12px;
     flex-wrap: wrap;
   }
 
-  .slideshow-container {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    border-radius: 0;
+  .hero-media {
+    border-radius: var(--radius-lg);
     overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.40);
+    position: relative;
+  }
+
+  .slideshow-container {
+    width: 100%;
+    height: clamp(260px, 30vw, 420px);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    position: relative;
   }
 
   .slide-img {
@@ -167,7 +170,6 @@ $alumni_feat = mysqli_query($conn, "SELECT * FROM alumni ORDER BY id DESC LIMIT 
     opacity: 0;
     transition: opacity 1.8s ease-in-out;
     will-change: opacity;
-    filter: blur(4px) brightness(0.55);
   }
 
   /* ---- TRUST STRIP ---- */
@@ -753,9 +755,8 @@ $alumni_feat = mysqli_query($conn, "SELECT * FROM alumni ORDER BY id DESC LIMIT 
 
   /* ---- RESPONSIVE ---- */
   @media (max-width: 960px) {
-    .hero-wrap { text-align: center; margin: 0 auto; }
-    .hero-content { text-align: center; }
-    .hero-content h1 { font-size: clamp(1.7rem, 5.5vw, 2.5rem); }
+    .hero-wrap { grid-template-columns: 1fr; text-align: center; }
+    .hero-content h1 { font-size: clamp(1.7rem, 5vw, 2.5rem); }
     .hero-subtitle { margin-left: auto; margin-right: auto; }
     .hero-pills { justify-content: center; }
     .hero-actions { justify-content: center; }
@@ -788,7 +789,7 @@ $alumni_feat = mysqli_query($conn, "SELECT * FROM alumni ORDER BY id DESC LIMIT 
 
 <!-- HEADER -->
 <header></header>
-<script src="load-header.js?v=5?v=5" defer></script>
+<script src="load-header.js?v=5" defer></script>
 
 <!-- Success / Error banners from form submission -->
 <?php if(isset($_GET['success'])): ?>
@@ -809,40 +810,11 @@ $alumni_feat = mysqli_query($conn, "SELECT * FROM alumni ORDER BY id DESC LIMIT 
      1. HERO SECTION
 ==================================================================== -->
 <section class="hero-section" aria-label="School hero">
-  <!-- Full Screen Background Slideshow -->
-  <div class="slideshow-container">
-    <?php
-    $slide_count = 0;
-    while($img = mysqli_fetch_assoc($hero_images)) {
-      if (empty($img['image'])) continue;
-      $slide_count++;
-      ?>
-      <img
-        class="slide-img"
-        src="<?= htmlspecialchars($img['image']) ?>"
-        alt="M.V. High School students and campus activities"
-        <?= $slide_count === 1 ? 'loading="eager"' : 'loading="lazy"' ?>
-        width="600"
-        height="420"
-      >
-    <?php } ?>
-    <?php if($slide_count === 0): ?>
-      <img
-        src="assets/PamphletImage.jpg"
-        alt="M.V. High School"
-        class="slide-img"
-        loading="eager"
-        width="600"
-        height="420"
-      >
-    <?php endif; ?>
-  </div>
-
   <div class="container">
     <div class="hero-wrap">
 
       <div class="hero-content">
-        <div class="hero-eyebrow" style="background: rgba(229,164,38,0.2); border-color: rgba(229,164,38,0.4);">&#127979; Admissions Open &mdash; <?= CURRENT_AY_LABEL ?></div>
+        <div class="hero-eyebrow">&#127979; Admissions Open &mdash; <?= CURRENT_AY_LABEL ?></div>
 
         <h1>
           Shaping Future Leaders<br>
@@ -869,6 +841,36 @@ $alumni_feat = mysqli_query($conn, "SELECT * FROM alumni ORDER BY id DESC LIMIT 
           <a href="admissions.php" class="btn btn-primary btn-lg">Apply for Admission</a>
           <a href="academics.php"  class="btn btn-outline-white">Explore Academics</a>
           <a href="gallery.php"    class="btn btn-outline-white btn-sm" style="align-self:center;">View Campus</a>
+        </div>
+      </div>
+
+      <div class="hero-media">
+        <div class="slideshow-container">
+          <?php
+          $slide_count = 0;
+          while($img = mysqli_fetch_assoc($hero_images)) {
+            if (empty($img['image'])) continue;
+            $slide_count++;
+            ?>
+            <img
+              class="slide-img"
+              src="<?= htmlspecialchars($img['image']) ?>"
+              alt="M.V. High School students and campus activities"
+              <?= $slide_count === 1 ? 'loading="eager"' : 'loading="lazy"' ?>
+              width="600"
+              height="420"
+            >
+          <?php } ?>
+          <?php if($slide_count === 0): ?>
+            <img
+              src="assets/PamphletImage.jpg"
+              alt="M.V. High School"
+              class="slide-img"
+              loading="eager"
+              width="600"
+              height="420"
+            >
+          <?php endif; ?>
         </div>
       </div>
 

@@ -29,7 +29,7 @@ while ($row = mysqli_fetch_assoc($result)) $events[] = $row;
 <body>
 
 <header></header>
-<script src="load-header.js?v=5?v=5" defer></script>
+<script src="load-header.js?v=5" defer></script>
 
 <!-- PAGE HERO -->
 <section class="page-hero" aria-label="Monthly activities hero">
