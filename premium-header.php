@@ -5,6 +5,7 @@
  * Active-link highlighting is done client-side in load-header.js.
  * Do NOT add PHP session or DB logic here — it is fetched independently.
  */
+require_once 'config.php';
 ?>
 <a href="#main-content" class="skip-to-content">Skip to main content</a>
 
