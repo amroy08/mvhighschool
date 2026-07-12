@@ -41,7 +41,7 @@ function navActive($file) {
     <a href="news-events.php" class="nav-link <?= navActive('news-events.php'); ?>">News & Events</a>
     <a href="accomplishments.php" class="nav-link <?= navActive('accomplishments.php'); ?>">Accomplishments</a>
 
-    <a href="monthly-activities.php" class="nav-link highlight <?= navActive('monthly-activities.php'); ?>">Monthly Activities</a>
+    <a href="monthly-activities.php" class="nav-link <?= navActive('monthly-activities.php'); ?>">Monthly Activities</a>
     <a href="alumni.php" class="nav-link <?= navActive('alumni.php'); ?>">Alumni</a>
 
     <a href="contact.php" class="nav-btn contact-btn <?= navActive('contact.php'); ?>">Contact Us</a>

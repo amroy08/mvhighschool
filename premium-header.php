@@ -107,7 +107,7 @@ require_once 'config.php';
     <a href="gallery.php" class="nav-link">Gallery</a>
     <a href="news-events.php" class="nav-link">News &amp; Events</a>
     <a href="accomplishments.php" class="nav-link">Accomplishments</a>
-    <a href="monthly-activities.php" class="nav-link highlight">Monthly Activities</a>
+    <a href="monthly-activities.php" class="nav-link">Monthly Activities</a>
     <a href="alumni.php" class="nav-link">Alumni</a>
 
     <div class="nav-divider" aria-hidden="true"></div>
