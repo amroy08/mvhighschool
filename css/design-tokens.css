@@ -95,9 +95,9 @@
 
   /* ---- CONTAINER ---- */
   --container-max: 1280px;
-  --container-pad: 24px;
-  --container-pad-md: 32px;
-  --container-pad-lg: 48px;
+  --container-pad: 16px;
+  --container-pad-md: 20px;
+  --container-pad-lg: 24px;
 
   /* ---- HEADER HEIGHTS ---- */
   --utility-bar-h:  40px;

@@ -10,24 +10,24 @@ function navActive($file) {
 
   <!-- TOP ROW -->
   <div class="header-top">
+    <div class="container header-top-container">
+      <div class="logo-box">
+        <img src="assets/EnglishMediumLogo.png" class="school-logo" alt="M.V. High School Logo - English Medium">
+      </div>
 
-    <div class="logo-box">
-      <img src="assets/EnglishMediumLogo.png" class="school-logo" alt="M.V. High School Logo - English Medium">
+      <div class="school-title-wrap">
+        <div class="trust-name">MARWARI VIDYALAYA SANCHALIT TRUST</div>
+        <h1 class="school-title">M. V. HIGH SCHOOL</h1>
+      </div>
+
+      <div class="logo-box">
+        <img src="assets/HindiMediumLogo.jpg" class="school-logo" alt="M.V. High School Logo - Hindi Medium">
+      </div>
+
+      <div class="hamburger" onclick="toggleMenu()" aria-label="Toggle Menu" role="button" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
     </div>
-
-    <div class="school-title-wrap">
-      <div class="trust-name">MARWARI VIDYALAYA SANCHALIT TRUST</div>
-      <h1 class="school-title">M. V. HIGH SCHOOL</h1>
-    </div>
-
-    <div class="logo-box">
-      <img src="assets/HindiMediumLogo.jpg" class="school-logo" alt="M.V. High School Logo - Hindi Medium">
-    </div>
-
-    <div class="hamburger" onclick="toggleMenu()" aria-label="Toggle Menu" role="button" tabindex="0">
-      <span></span><span></span><span></span>
-    </div>
-
   </div>
 
   <!-- NAV -->

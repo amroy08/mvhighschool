@@ -113,7 +113,10 @@
 .header-top {
   background: linear-gradient(135deg, #eaf0ff 0%, #f4f7ff 45%, var(--ivory) 100%);
   border-bottom: 1px solid rgba(200,215,240,0.4);
-  padding: 12px 48px;
+  padding: 12px 0;
+}
+
+.header-top-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -328,7 +331,9 @@
   .utility-bar { display: none; }
 
   .header-top {
-    padding: 10px 16px;
+    padding: 10px 0;
+  }
+  .header-top-container {
     gap: 8px;
   }
 
