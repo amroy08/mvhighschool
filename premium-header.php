@@ -61,35 +61,33 @@ require_once 'config.php';
 
   <!-- Identity row -->
   <div class="header-top">
-    <div class="container header-top-container">
-      <div class="logo-box">
-        <a href="index.php" aria-label="M.V. High School — English Medium Home">
-          <img src="assets/EnglishMediumLogo.png" class="school-logo" alt="M.V. High School — English Medium" width="80"
-            height="80">
-        </a>
-      </div>
-
-      <div class="school-title-wrap">
-        <div class="trust-name">Marwari Vidyalaya Sanchalit Trust</div>
-        <div class="school-title">M. V. High School</div>
-        <div class="school-tagline">Charni Road, Mumbai &mdash; English &amp; Hindi Medium</div>
-      </div>
-
-      <div class="logo-box">
-        <a href="index.php" aria-label="M.V. High School — Hindi Medium Home">
-          <img src="assets/HindiMediumLogo.png" class="school-logo" alt="M.V. High School — Hindi Medium" width="80"
-            height="80">
-        </a>
-      </div>
-
-      <!-- Hamburger -->
-      <button class="hamburger" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false"
-        aria-controls="mobileMenu" type="button">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </button>
+    <div class="logo-box">
+      <a href="index.php" aria-label="M.V. High School — English Medium Home">
+        <img src="assets/EnglishMediumLogo.png" class="school-logo" alt="M.V. High School — English Medium" width="80"
+          height="80">
+      </a>
     </div>
+
+    <div class="school-title-wrap">
+      <div class="trust-name">Marwari Vidyalaya Sanchalit Trust</div>
+      <div class="school-title">M. V. High School</div>
+      <div class="school-tagline">Charni Road, Mumbai &mdash; English &amp; Hindi Medium</div>
+    </div>
+
+    <div class="logo-box">
+      <a href="index.php" aria-label="M.V. High School — Hindi Medium Home">
+        <img src="assets/HindiMediumLogo.png" class="school-logo" alt="M.V. High School — Hindi Medium" width="80"
+          height="80">
+      </a>
+    </div>
+
+    <!-- Hamburger -->
+    <button class="hamburger" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false"
+      aria-controls="mobileMenu" type="button">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </button>
   </div><!-- /header-top -->
 
   <!-- Navigation -->
@@ -109,7 +107,7 @@ require_once 'config.php';
     <a href="gallery.php" class="nav-link">Gallery</a>
     <a href="news-events.php" class="nav-link">News &amp; Events</a>
     <a href="accomplishments.php" class="nav-link">Accomplishments</a>
-    <a href="monthly-activities.php" class="nav-link highlight">Monthly Activities</a>
+    <a href="monthly-activities.php" class="nav-link">Monthly Activities</a>
     <a href="alumni.php" class="nav-link">Alumni</a>
 
     <div class="nav-divider" aria-hidden="true"></div>

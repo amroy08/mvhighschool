@@ -10,24 +10,24 @@ function navActive($file) {
 
   <!-- TOP ROW -->
   <div class="header-top">
-    <div class="container header-top-container">
-      <div class="logo-box">
-        <img src="assets/EnglishMediumLogo.png" class="school-logo" alt="M.V. High School Logo - English Medium">
-      </div>
 
-      <div class="school-title-wrap">
-        <div class="trust-name">MARWARI VIDYALAYA SANCHALIT TRUST</div>
-        <h1 class="school-title">M. V. HIGH SCHOOL</h1>
-      </div>
-
-      <div class="logo-box">
-        <img src="assets/HindiMediumLogo.jpg" class="school-logo" alt="M.V. High School Logo - Hindi Medium">
-      </div>
-
-      <div class="hamburger" onclick="toggleMenu()" aria-label="Toggle Menu" role="button" tabindex="0">
-        <span></span><span></span><span></span>
-      </div>
+    <div class="logo-box">
+      <img src="assets/EnglishMediumLogo.png" class="school-logo" alt="M.V. High School Logo - English Medium">
     </div>
+
+    <div class="school-title-wrap">
+      <div class="trust-name">MARWARI VIDYALAYA SANCHALIT TRUST</div>
+      <h1 class="school-title">M. V. HIGH SCHOOL</h1>
+    </div>
+
+    <div class="logo-box">
+      <img src="assets/HindiMediumLogo.jpg" class="school-logo" alt="M.V. High School Logo - Hindi Medium">
+    </div>
+
+    <div class="hamburger" onclick="toggleMenu()" aria-label="Toggle Menu" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+
   </div>
 
   <!-- NAV -->
@@ -41,7 +41,7 @@ function navActive($file) {
     <a href="news-events.php" class="nav-link <?= navActive('news-events.php'); ?>">News & Events</a>
     <a href="accomplishments.php" class="nav-link <?= navActive('accomplishments.php'); ?>">Accomplishments</a>
 
-    <a href="monthly-activities.php" class="nav-link highlight <?= navActive('monthly-activities.php'); ?>">Monthly Activities</a>
+    <a href="monthly-activities.php" class="nav-link <?= navActive('monthly-activities.php'); ?>">Monthly Activities</a>
     <a href="alumni.php" class="nav-link <?= navActive('alumni.php'); ?>">Alumni</a>
 
     <a href="contact.php" class="nav-btn contact-btn <?= navActive('contact.php'); ?>">Contact Us</a>
