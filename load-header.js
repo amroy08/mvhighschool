@@ -19,6 +19,10 @@
       const href = link.getAttribute('href');
       if (href && href === current) {
         link.classList.add('active');
+        // Don't override highlight class styling
+        if (!link.classList.contains('highlight')) {
+          link.classList.add('active');
+        }
       }
     });
   }
